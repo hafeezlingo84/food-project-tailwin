@@ -1,7 +1,9 @@
 import React from 'react';
 import logo from '../images/food-logo.png';
 import { MdShoppingBasket } from "react-icons/md";
+import { Link } from 'react-router-dom';
 import avatar from '../images/avatar.png';
+import { motion } from 'framer-motion';
 
  const Header = () => {
   return (
@@ -11,10 +13,10 @@ import avatar from '../images/avatar.png';
         {/* {desktop & mobile} */}
         <div className='hidden md:flex w-full h-full items-center justify-between'>
 
-                <div className='flex items-center gap-2'>
+                <Link to={"/"} className='flex items-center gap-2'>
                     <img src={logo} alt="logo" className='w-10 object-cover'  />
                     <p className='text-headingColor text-xl font-bold'>Food Resturent</p>
-                </div>
+                </Link>
 
             <div className='flex items-center gap-8'>
             <ul className='flex items-center gap-8'>
@@ -29,7 +31,7 @@ import avatar from '../images/avatar.png';
                     <p className='text-xs text-textWhite font-semibold'>2</p>
                   </div>
                 </div>
-                <img src={avatar} className="w-10 min-w-[40px] min-h-[40px]" alt="userProfile" />
+                <motion.img whileTap={{ scale:0.6 }} src={avatar} className="w-10 min-w-[40px] min-h-[40px] cursor-pointer" alt="userProfile" />
             </div>
           </div>
 
