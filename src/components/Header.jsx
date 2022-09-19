@@ -7,6 +7,8 @@ import { motion } from 'framer-motion';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import {app } from '../firebase.config'
 import { async } from '@firebase/util';
+import { useStateValue } from '../context/StateProvider';
+import { actionType } from '../context/reducer';
 
 
  const Header = () => {
@@ -14,10 +16,17 @@ import { async } from '@firebase/util';
   const firebaseAuth = getAuth(app);
   const provider = new GoogleAuthProvider();
 
+  const [{user}, dispatch] = useStateValue()
+
   const login = async () => {
-    const response = await signInWithPopup(firebaseAuth, provider);
-    console.log(response);
-  }
+    const {
+      user: {refreshToken, providerData},
+    } = await signInWithPopup(firebaseAuth, provider);
+    dispatch({
+      type: actionType.SET_USER,
+      user: providerData[0],
+    });
+  };
 
   return (
 
@@ -46,9 +55,11 @@ import { async } from '@firebase/util';
                 </div>
 
                 <div className='relative'>
-                <motion.img whileTap={{ scale:0.6 }} src={avatar} className="w-10 min-w-[40px] min-h-[40px] cursor-pointer"
+
+                <motion.img whileTap={{ scale:0.6 }} src={user ? user.photoURL : avatar} className="w-10 min-w-[40px] min-h-[40px] cursor-pointer rounded-r-full"
                 onClick={login}
                 alt="userProfile" />
+
                 </div>
 
             </div>
