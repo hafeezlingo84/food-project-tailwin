@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../images/food-logo.png';
 import { MdShoppingBasket } from "react-icons/md";
-import { Link } from 'react-router-dom';
+import { json, Link } from 'react-router-dom';
 import avatar from '../images/avatar.png';
 import { motion } from 'framer-motion';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
@@ -26,6 +26,7 @@ import { actionType } from '../context/reducer';
       type: actionType.SET_USER,
       user: providerData[0],
     });
+    localStorage.setItem("user", JSON.stringify(providerData[0]));
   };
 
   return (
