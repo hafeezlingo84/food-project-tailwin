@@ -9,7 +9,8 @@ module.exports = {
       textColor: "#515151",
       cartNumBg: "#e80013",
       primary: "#f5f3",
-      textWhite:"white"
+      textWhite:"white",
+      bgDrophover:"#ECECEC"
     },
   },
   plugins: [],
