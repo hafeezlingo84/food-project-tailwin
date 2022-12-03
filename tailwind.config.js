@@ -10,7 +10,8 @@ module.exports = {
       cartNumBg: "#e80013",
       primary: "#f5f3",
       textWhite:"white",
-      bgDrophover:"#ECECEC"
+      bgDrophover:"#ECECEC",
+      bgGray:'gray'
     },
   },
   plugins: [],
